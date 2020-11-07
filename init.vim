@@ -13,6 +13,7 @@ set shiftwidth=4
 set expandtab
 filetype plugin indent on
 
+
 call plug#begin('~/AppData/Local/nvim/plugged')
 " Themes
 Plug 'morhetz/gruvbox'
@@ -176,3 +177,17 @@ nmap <leader>rn <Plug>(coc-rename)
 nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 "manage extensions.
 nnoremap <silent> <space>e :<C-u>CocList extensions<cr> 
+
+
+"Font Size
+let s:fontsize = 12
+function! AdjustFontSize(amount)
+  let s:fontsize = s:fontsize+a:amount
+  :execute "GuiFont! Consolas:h" . s:fontsize
+endfunction
+
+noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>
+noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>
+inoremap <C-ScrollWheelUp> <Esc>:call AdjustFontSize(1)<CR>a
+inoremap <C-ScrollWheelDown> <Esc>:call AdjustFontSize(-1)<CR>a
+
