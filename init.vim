@@ -71,7 +71,7 @@ let g:neosnippet#enable_completed_snippet = 1
 " LanguageClient-neovim  
 " Required for operations modifying multiple buffers like rename. 
 set hidden
-
+let NERDTreeShowHidden=1
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
@@ -191,3 +191,16 @@ noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>
 inoremap <C-ScrollWheelUp> <Esc>:call AdjustFontSize(1)<CR>a
 inoremap <C-ScrollWheelDown> <Esc>:call AdjustFontSize(-1)<CR>a
 
+" Kite Configuration
+" Python, JavaScript, Go
+let g:kite_supported_languages = ['python', 'javascript', 'go']
+
+" All the languages Kite supports
+let g:kite_supported_languages = ['*']
+
+" Turn off Kite
+let g:kite_supported_languages = []
+
+" Kite - Status Line
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line
